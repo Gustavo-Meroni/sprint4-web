@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react';
 
 const Hero = ({ title, description, buttonText, buttonLink }) => {
   return (
-    <section id="inicio" className="bg-blue-50 py-16">
-      <div className="container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-4xl font-bold text-blue-700 mb-4">
+    <section
+      id="inicio"
+      className="bg-gradient-to-r from-cyan-50 to-blue-50 mt-16 py-24"
+    >
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-cyan-700 leading-tight mb-6">
           {title}
         </h1>
-        <p className="text-lg md:text-xl text-gray-700 mb-8">
-          {description}
-        </p>
+        <p className="text-lg md:text-xl text-gray-700 mb-10">{description}</p>
         <a
           href={buttonLink}
-          className="bg-blue-600 text-white px-6 py-3 rounded-full text-lg hover:bg-blue-700 transition"
+          className="inline-block bg-cyan-600 text-white text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-cyan-700 hover:scale-105 transition-transform duration-300"
         >
           {buttonText}
         </a>

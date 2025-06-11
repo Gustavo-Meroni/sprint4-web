@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { AlertCircle, CheckCircle2 } from 'lucide-react';
 
 const Impactos = ({ negativos, positivos }) => {
   return (
@@ -8,23 +9,32 @@ const Impactos = ({ negativos, positivos }) => {
           Impactos Negativos vs. Positivos
         </h2>
         <div className="grid gap-8 md:grid-cols-2">
-          <div className="bg-red-100 p-6 rounded-2xl shadow-md">
+          {/* Impactos Negativos */}
+          <div className="bg-red-100 p-6 rounded-2xl shadow-md flex flex-col items-center">
+            <AlertCircle size={48} className="text-red-600 mb-4" />
             <h3 className="text-xl font-semibold text-red-600 mb-4">
               Impactos Negativos do Problema
             </h3>
             <ul className="text-left list-disc list-inside text-gray-700">
               {negativos.map((item, index) => (
-                <li key={index} className="mb-2">{item}</li>
+                <li key={index} className="mb-2">
+                  {item}
+                </li>
               ))}
             </ul>
           </div>
-          <div className="bg-green-100 p-6 rounded-2xl shadow-md">
+
+          {/* Impactos Positivos */}
+          <div className="bg-green-100 p-6 rounded-2xl shadow-md flex flex-col items-center">
+            <CheckCircle2 size={48} className="text-green-600 mb-4" />
             <h3 className="text-xl font-semibold text-green-600 mb-4">
               Impactos Positivos da Solução
             </h3>
             <ul className="text-left list-disc list-inside text-gray-700">
               {positivos.map((item, index) => (
-                <li key={index} className="mb-2">{item}</li>
+                <li key={index} className="mb-2">
+                  {item}
+                </li>
               ))}
             </ul>
           </div>

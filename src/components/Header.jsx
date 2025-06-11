@@ -1,25 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
-const Header = ({ title, links, highlightColor }) => {
+const Header = ({ title, links }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="bg-white shadow-md py-4">
-      <div className="container mx-auto px-6 flex items-center gap-2 ">
-        <h1 className="text-3xl font-bold text-blue-700">{title}</h1>
-        <nav className="ml-auto">
-          <ul className="flex space-x-6 font-semibold">
-            {links.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className={`text-lg ${highlightColor} hover:text-blue-700`}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+    <header className="bg-white shadow-md fixed w-full z-50">
+      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-cyan-600">{title}</h1>
+
+        <button
+          className="md:hidden text-gray-800"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
+        <nav className="hidden md:flex gap-6">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-gray-800 hover:text-cyan-800 font-medium transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
         </nav>
       </div>
+
+      {menuOpen && (
+        <div className="md:hidden bg-white px-4 pb-4">
+          <nav className="flex flex-col gap-3">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-gray-800 hover:text-cyan-800 font-medium transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
