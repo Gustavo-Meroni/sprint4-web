@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { login } from '../services/authService'; 
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: '', senha: '' });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -13,10 +14,10 @@ const Login = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email || !formData.senha) {
+    if (!formData.email || !formData.password) {
       setError('Preencha todos os campos.');
       return;
     }
@@ -26,9 +27,19 @@ const Login = () => {
       return;
     }
 
-    setError('');
-
-    navigate('/dashboard');
+    try {
+      console.log(formData);
+      
+      const data = await login(formData.email, formData.password);
+      localStorage.setItem('token', data.token);
+      navigate('/dashboard');
+    } catch (err) {
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError('Erro ao conectar com o servidor.');
+      }
+    }
   };
 
   return (
@@ -62,14 +73,14 @@ const Login = () => {
           className="w-full p-2 border border-gray-300 rounded mb-4"
           placeholder="seu@email.com"
         />
-        <label className="block mb-2 font-semibold" htmlFor="senha">
+        <label className="block mb-2 font-semibold" htmlFor="password">
           Senha
         </label>
         <input
-          id="senha"
-          name="senha"
+          id="password"
+          name="password"
           type="password"
-          value={formData.senha}
+          value={formData.password}
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mb-6"
           placeholder="********"
