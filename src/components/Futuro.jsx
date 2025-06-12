@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Futuro = ({ titulo, descricao, imagemUrl, altText }) => {
+const Futuro = ({ titulo, descricao, altText }) => {
   return (
     <section id="futuro" className="bg-blue-50 py-16">
       <div className="container mx-auto px-4 text-center">
@@ -8,7 +8,7 @@ const Futuro = ({ titulo, descricao, imagemUrl, altText }) => {
         <p className="text-gray-700 max-w-3xl mx-auto mb-8">{descricao}</p>
         <div className="flex justify-center">
           <img
-            src={imagemUrl}
+            src="/image-ia.jpg"
             alt={altText}
             className="rounded-3xl shadow-lg w-full max-w-3xl object-cover"
           />

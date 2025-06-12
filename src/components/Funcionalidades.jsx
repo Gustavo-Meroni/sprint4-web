@@ -1,4 +1,3 @@
-import React from 'react';
 import * as LucideIcons from 'lucide-react';
 
 const Funcionalidades = ({ title, funcionalidades }) => {
@@ -8,8 +7,7 @@ const Funcionalidades = ({ title, funcionalidades }) => {
         <h2 className="text-3xl font-bold text-blue-800 mb-12">{title}</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {funcionalidades.map((item, index) => {
-            const IconComponent =
-              LucideIcons[item.icon] || LucideIcons['Activity'];
+            const IconComponent = item.icone || LucideIcons['Activity'];
             return (
               <div
                 key={index}

@@ -1,51 +1,73 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
-const Header = ({ title, links }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const Header = ({ title, links, highlightColor }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-cyan-600">{title}</h1>
+    <header className="bg-white shadow-md py-4 fixed top-0 left-0 right-0 z-50">
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between max-w-full">
+        {/* Título à esquerda */}
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
+          {title}
+        </h1>
 
+        {/* Botão hambúrguer - só aparece em telas pequenas */}
         <button
-          className="md:hidden text-gray-800"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Abrir menu"
+          className="sm:hidden flex items-center p-2 text-blue-700 border-blue-700"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        <nav className="hidden md:flex gap-6">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-gray-800 hover:text-cyan-800 font-medium transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+        {/* Navegação */}
+        <nav
+          className={`
+    ${isOpen ? 'block' : 'hidden'}
+    absolute top-full left-0 w-full bg-white shadow-md sm:shadow-none sm:static sm:block sm:w-auto
+  `}
+        >
+          <ul
+            className="
+    flex flex-col sm:flex-row sm:items-center
+    space-y-1 sm:space-y-0 sm:space-x-2 md:space-x-4 lg:space-x-6
+    font-semibold
+  "
+          >
+            {links.map((link) => (
+              <li
+                key={link.name}
+                className="border-b border-gray-200 sm:border-none"
+              >
+                <a
+                  href={link.href}
+                  className={`
+            block px-3 py-1 text-sm sm:text-base md:text-sm lg:text-base
+            ${highlightColor} hover:text-blue-800
+          `}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+
+            <li className="border-b border-gray-200 sm:border-none">
+              <a
+                href="/login"
+                className={`
+          block px-3 py-1 text-sm sm:text-base md:text-sm lg:text-base
+          ${highlightColor} hover:text-blue-800 font-semibold
+        `}
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </a>
+            </li>
+          </ul>
         </nav>
       </div>
-
-      {menuOpen && (
-        <div className="md:hidden bg-white px-4 pb-4">
-          <nav className="flex flex-col gap-3">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-gray-800 hover:text-cyan-800 font-medium transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
   );
 };

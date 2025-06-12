@@ -1,4 +1,4 @@
-const Sobre = ({ title, description, imageUrl, altText }) => {
+const Sobre = ({ title, description, altText }) => {
   return (
     <section id="sobre" className="bg-white py-16">
       <div className="container mx-auto px-4 flex flex-col items-center justify-center gap-10">
@@ -11,7 +11,7 @@ const Sobre = ({ title, description, imageUrl, altText }) => {
         {/* Imagem */}
         <div className="flex justify-center">
           <img
-            src={imageUrl}
+            src="/image-pulseira.jpg"
             alt={altText}
             className="rounded-xl shadow-lg w-full h-auto max-w-xs shadow-blue-300/50"
           />
