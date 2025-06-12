@@ -28,8 +28,6 @@ const Login = () => {
     }
 
     try {
-      console.log(formData);
-      
       const data = await login(formData.email, formData.password);
       localStorage.setItem('token', data.token);
       navigate('/dashboard');
