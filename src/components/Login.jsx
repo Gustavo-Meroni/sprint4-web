@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { login } from '../services/authService'; 
+import { login } from '../services/authService';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -49,13 +49,13 @@ const Login = () => {
         <div className="flex items-center mb-4">
           <Link
             to="/"
-            className="text-purple-600 hover:text-purple-800 flex items-center gap-2"
+            className="text-blue-600 hover:text-blue-800 flex items-center gap-2"
           >
             <ArrowLeft size={20} />
             Voltar
           </Link>
         </div>
-        <h2 className="text-2xl font-bold mb-6 text-center text-purple-700">
+        <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">
           Login
         </h2>
         {error && <p className="text-red-600 mb-4">{error}</p>}
@@ -85,7 +85,7 @@ const Login = () => {
         />
         <button
           type="submit"
-          className="w-full bg-purple-600 text-white py-3 rounded hover:bg-purple-700 transition"
+          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
         >
           Entrar
         </button>

@@ -4,68 +4,61 @@ import { Menu, X } from 'lucide-react';
 const Header = ({ title, links, highlightColor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <header className="bg-white shadow-md py-4 fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between max-w-full">
-        {/* Título à esquerda */}
-        <h1 className="text-2xl sm:text-3xl font-bold text-blue-700">
+      <div className="container mx-auto px-4 flex items-center justify-between max-w-7xl">
+        <h1 className="text-2xl xl:text-3xl font-bold text-blue-700 truncate">
           {title}
         </h1>
 
-        {/* Botão hambúrguer - só aparece em telas pequenas */}
         <button
-          className="sm:hidden flex items-center p-2 text-blue-700 border-blue-700"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
+          className="lg:hidden p-2 rounded-md hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors duration-300"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Navegação */}
         <nav
           className={`
-    ${isOpen ? 'block' : 'hidden'}
-    absolute top-full left-0 w-full bg-white shadow-md sm:shadow-none sm:static sm:block sm:w-auto
-  `}
-        >
-          <ul
-            className="
-    flex flex-col sm:flex-row sm:items-center
-    space-y-1 sm:space-y-0 sm:space-x-2 md:space-x-4 lg:space-x-6
-    font-semibold
-  "
-          >
-            {links.map((link) => (
-              <li
-                key={link.name}
-                className="border-b border-gray-200 sm:border-none"
-              >
-                <a
-                  href={link.href}
-                  className={`
-            block px-3 py-1 text-sm sm:text-base md:text-sm lg:text-base
-            ${highlightColor} hover:text-blue-800
+            flex flex-col lg:flex-row lg:items-center
+            absolute lg:static
+            top-full right-4 lg:right-0
+            w-48 lg:w-auto
+            bg-blue-50 lg:bg-transparent
+            text-center lg:text-left
+            z-50
+            shadow-lg lg:shadow-none
+            gap-2 lg:gap-6
+            rounded-b-md
+            overflow-hidden
+            transition-all duration-300 ease-in-out
+            ${
+              isOpen
+                ? 'max-h-80 opacity-100'
+                : 'max-h-0 opacity-0 lg:max-h-full lg:opacity-100'
+            }
           `}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-
-            <li className="border-b border-gray-200 sm:border-none">
-              <a
-                href="/login"
-                className={`
-          block px-3 py-1 text-sm sm:text-base md:text-sm lg:text-base
-          ${highlightColor} hover:text-blue-800 font-semibold
-        `}
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </a>
-            </li>
-          </ul>
+        >
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`block px-3 py-2 text-sm lg:text-base ${highlightColor} hover:text-blue-800 font-medium transition`}
+            >
+              {link.name}
+            </a>
+          ))}
+          <a
+            href="/login"
+            onClick={() => setIsOpen(false)}
+            className={`block px-3 py-2 text-sm lg:text-base ${highlightColor} hover:text-blue-800 font-semibold transition`}
+          >
+            Login
+          </a>
         </nav>
       </div>
     </header>

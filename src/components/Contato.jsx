@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Contato = ({ title, formLabels, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -107,6 +108,15 @@ const Contato = ({ title, formLabels, onSubmit }) => {
           >
             Enviar
           </button>
+          <p className="mt-6 text-center text-sm text-gray-700">
+            Já tem uma conta?{' '}
+            <Link
+              to="/login"
+              className="text-blue-700 font-semibold hover:underline"
+            >
+              Faça login
+            </Link>
+          </p>
         </form>
       </div>
     </section>

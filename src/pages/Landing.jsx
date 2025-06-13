@@ -67,7 +67,7 @@ export default function Landing() {
   return (
     <>
       <Header
-        title="Pulseira Inteligente"
+        title="VitalCare"
         links={headerLinks}
         highlightColor="text-blue-600"
       />
@@ -76,7 +76,7 @@ export default function Landing() {
         <Hero
           title="Tecnologia que cuida"
           description="Nossa pulseira inteligente monitora crianças hospitalizadas em tempo real, garantindo mais segurança e tranquilidade."
-          buttonText="Começar"
+          buttonText="Saiba mais"
           buttonLink="#sobre"
         />
 
