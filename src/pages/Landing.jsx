@@ -81,7 +81,7 @@ export default function Landing() {
         />
 
         <Sobre
-          title="O que é a Pulseira Inteligente?"
+          title="O que é a Vital Care?"
           description="É um dispositivo vestível projetado para monitorar os sinais vitais de crianças hospitalizadas, alertando a equipe médica em casos de emergência."
           imageUrl="/imagens/pulseira.jpg"
           altText="Imagem da pulseira inteligente"
