@@ -65,7 +65,7 @@ export default function Landing() {
   ];
 
   return (
-    <>
+    <div className="bg-gray-50  ">
       <Header
         title="VitalCare"
         links={headerLinks}
@@ -135,6 +135,6 @@ export default function Landing() {
           </div>
         </div>
       </Footer>
-    </>
+    </div>
   );
 }

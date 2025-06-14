@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ title, links, highlightColor }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,13 +53,12 @@ const Header = ({ title, links, highlightColor }) => {
               {link.name}
             </a>
           ))}
-          <a
-            href="/login"
-            onClick={() => setIsOpen(false)}
+          <Link
+            to="/login"
             className={`block px-3 py-2 text-sm lg:text-base ${highlightColor} hover:text-blue-800 font-semibold transition`}
           >
             Login
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
