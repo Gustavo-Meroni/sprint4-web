@@ -1,6 +1,12 @@
-# VitalCare - Tecnologia em Saúde Infantil
+# ❤️VitalCare - Tecnologia em Saúde Infantil
 
 **VitalCare** é um projeto de inovação tecnológica na área da saúde, com foco no **monitoramento infantil em hospitais**. A proposta simula o uso de uma pulseira inteligente capaz de rastrear, monitorar e garantir a segurança de crianças hospitalizadas.
+
+## 👥 Integrantes
+
+- **Diogo Cecchini Bueno** – 560427
+- **Gustavo Pandolfo Meroni** – 560271
+- **Matheus Aparecido Rocha Plati** – 559813
 
 ## 🧠 Objetivo
 
